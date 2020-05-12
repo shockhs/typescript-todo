@@ -1,1 +1,1 @@
-<h1>TodoList App. Stack: React(TypeScript) + Firebase. Not completed version</h1>
+<h2>TodoList App. Stack: React(TypeScript) + Firebase. Not completed version</h2>
