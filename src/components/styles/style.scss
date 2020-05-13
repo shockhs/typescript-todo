@@ -1,3 +1,9 @@
+
+$black: #363839;
+$gray: #bdc1c6;
+$white: #140e4e;
+$green: #04fa56;
+
 h1,
 h2,
 h3,
@@ -7,7 +13,8 @@ h6,
 p,
 ul,
 li,
-ol {
+ol,
+input {
   margin: 0;
   padding: 0;
 }
@@ -18,6 +25,27 @@ body {
   margin: 0;
 }
 
+body {
+  background: #000000; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #000000,
+    #08373d
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #000000,
+    #08373d
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: #fff;
+  font-family: "Montserrat", sans-serif;
+}
+
+.container {
+  width: 1280px;
+  margin: 0 auto;
+}
+
 *,
 *::before,
 *::after {
@@ -26,7 +54,7 @@ body {
 
 .loginPage {
   height: 100vh;
-  width: 100vw;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -54,8 +82,7 @@ body {
 }
 
 .mainPage {
-  height: 100vh;
-  width: 100vw;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -68,11 +95,76 @@ body {
   align-items: center;
   &__item {
     display: flex;
+    padding-left: 10px;
+    width: 600px;
+    border: 1px solid #00ffff;
     flex-direction: column;
     &-main {
-      display: flex;
-      justify-content: space-between;
-      width: 400px;
+      display: grid;
+      grid-template-columns: 3% 82% 15%;
+      grid-template-rows: 30px;
+      align-items: center;
+      input[type="checkbox"] {
+        position: relative;
+        width: 1.5em;
+        height: 1.5em;
+        color: $black;
+        border: 1px solid $gray;
+        border-radius: 4px;
+        appearance: none;
+        outline: 0;
+        cursor: pointer;
+        transition: background 175ms cubic-bezier(0.1, 0.1, 0.25, 1);
+        &::before {
+          position: absolute;
+          content: "";
+          display: block;
+          top: 0px;
+          left: 6px;
+          width: 8px;
+          height: 14px;
+          border-style: solid;
+          border-color: $white;
+          border-width: 0 2px 2px 0;
+          transform: rotate(45deg);
+          opacity: 0;
+        }
+        &:checked {
+          color: $white;
+          border-color: $green;
+          background: $green;
+          &::before {
+            opacity: 1;
+          }
+          ~ label::before {
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+          }
+        }
+      }
+      input[type="text"],label {
+        margin-left: 15px;
+      }
+      input[type="text"] {
+        margin-right: 10px;
+      }
+      button {
+        border: none;
+        height: 100%;
+        width: 100%;
+        color: #04fa56;
+        font-weight: 700;
+        background: #140e4e;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        text-decoration: none;
+        font-size: 16px;
+        overflow: hidden;
+        transition: 0.2s;
+      }
+      button:hover {
+        color: #fff;
+        background-color: #04fa56;
+      }
     }
   }
   &__item + &__item {
@@ -82,11 +174,12 @@ body {
 
 .header {
   display: grid;
-  width: 100vw;
+  width: 100%;
+  margin-bottom: 20px;
+  height: 10vh;
   grid-template-columns: 10% 80% 10%;
   grid-template-areas: "title counterBlock logout";
   align-items: center;
-  margin-bottom: 20px;
   &__counter {
     grid-area: counterBlock;
     justify-self: center;
@@ -94,16 +187,109 @@ body {
   &__logout {
     grid-area: logout;
     justify-self: center;
+    button {
+      border: none;
+      padding: 10px 30px;
+      color: #078b12;
+      background: #031b0e;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      text-decoration: none;
+      font-size: 16px;
+      overflow: hidden;
+      transition: 0.2s;
+    }
+    button:hover {
+      color: #fff;
+      box-shadow: 0 0 5px #3af321, 0 0 10px #3af321, 0 0 20px #3af321;
+    }
   }
   &__title {
     grid-area: title;
+    font-size: 26px;
   }
 }
 
 .inputForm {
-  margin-top: 20px;
-
-  display: flex;
-  justify-content: space-between;
-  width: 400px;
+  width: 100%;
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: 80% 20%;
+  button {
+    margin-left: 10px;
+    border: none;
+    color: #00f16d;
+    background: #031b0e;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-decoration: none;
+    font-size: 16px;
+    overflow: hidden;
+    transition: 0.2s;
+  }
+  button:hover {
+    color: #fff;
+    box-shadow: 0 0 5px #00f16d, 0 0 10px #00f16d, 0 0 20px #00f16d;
+  }
+  &__field {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 40px;
+    width: 100%;
+    span {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      display: block;
+      background: #fff;
+      width: 100%;
+      height: 2px;
+    }
+    span::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #00f16d;
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.5s ease-in-out;
+    }
+    input[type="text"]:focus ~ span::before,
+    input[type="text"]:valid ~ span::before {
+      transform: scaleX(1);
+      transform-origin: left;
+      transition: transform 0.5s ease-in-out;
+    }
+    input[type="text"] {
+      position: absolute;
+      background: transparent;
+      outline: none;
+      border: none;
+      box-shadow: none;
+      font-size: 16px;
+      color: #fff;
+      width: 100%;
+    }
+    input[type="text"]:focus {
+      outline: none;
+    }
+    input[type="text"]:focus + label,
+    input[type="text"]:valid + label {
+      transform: translateY(-15px);
+      color: #00f16d;
+      font-weight: 300;
+    }
+    label {
+      position: absolute;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      display: block;
+      transition: 0.5s;
+    }
+  }
 }

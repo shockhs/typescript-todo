@@ -18,13 +18,18 @@ const TodoCreateForm: FunctionComponent<createForm> = ({ updateTodo }) => {
 
     return (
         <div className="inputForm">
-            <input
-                value={titleTodo}
-                placeholder="Text..."
-                onChange={(e) => setTitleTodo(e.currentTarget.value)}
-            />
+            <div className="inputForm__field">
+                <input
+                    required
+                    type="text"
+                    value={titleTodo}
+                    onChange={(e) => setTitleTodo(e.currentTarget.value)}
+                />
+                <label>Enter new Task</label>
+                <span></span>
+            </div>
 
-            <button onClick={(e) => handleClick(e)}> Create</button>
+            <button className="inputForm__button" onClick={(e) => handleClick(e)}> Create</button>
         </div>
     );
 }

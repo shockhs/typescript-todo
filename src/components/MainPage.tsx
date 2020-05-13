@@ -67,17 +67,20 @@ const MainPage: FunctionComponent = () => {
     }, [])
 
     return (
-        <div className="mainPage">
+        <div className="container">
             <Header random={todoList.length} />
-            <div className="todoElements">
-                {todoList.length
-                    ? todoList.map((item) => {
-                        return <TodoItem key={item.uid} deleteTodo={handleDeleteTodo} status={item.status} uid={item.uid} title={item.title} />
-                    })
-                    : null
-                }
+            <div className="mainPage">
+                <div className="todoElements">
+                    {todoList.length
+                        ? todoList.map((item) => {
+                            return <TodoItem key={item.uid} deleteTodo={handleDeleteTodo} status={item.status} uid={item.uid} title={item.title} />
+                        })
+                        : null
+                    }
+
+                    <TodoCreateForm updateTodo={updateTodoList} />
+                </div>
             </div>
-            <TodoCreateForm updateTodo={updateTodoList} />
         </div>
     );
 }

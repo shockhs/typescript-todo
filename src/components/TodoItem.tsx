@@ -34,23 +34,26 @@ const TodoItem: FunctionComponent<todoItem> = ({ title, status, uid, deleteTodo 
         setStatusTodo(statusTodo => !statusTodo);
         setForceUpdate(forceUpdate => !forceUpdate);
     }
-
     return (
         <div className="todoElements__item">
             <div className="todoElements__item-main">
+
                 <input
-                    className="toggle"
                     type="checkbox"
+                    className="toggle"
                     checked={statusTodo}
+                    id="check"
                     onChange={() => { handleStatusChange() }}
                 />
                 {statusEdit
                     ? <input
+                        type="text"
+                        className="todoElements__item-main-label"
                         onChange={(e) => setTitleTodo(e.currentTarget.value)}
                         autoFocus={true}
                         onBlur={() => setForceUpdate(forceUpdate => !forceUpdate)}
                         value={titleTodo} />
-                    : <label onDoubleClick={() => setStatusEdit(true)}>
+                    : <label className="todoElements__item-main-label" onDoubleClick={() => setStatusEdit(true)}>
                         {statusTodo ? <s>{titleTodo}</s> : titleTodo}
                     </label>}
                 <button className="destroy" onClick={(event) => deleteTodo(event, uid)}>Delete</button>
