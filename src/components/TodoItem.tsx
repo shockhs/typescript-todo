@@ -1,13 +1,13 @@
 import React, { FunctionComponent, useEffect, useState } from 'react';
 import firebase from '../data/firebase';
-
+import deleteIcon from '../images/delete.svg';
 
 
 interface todoItem {
     title: string,
     status: boolean,
     uid: string,
-    deleteTodo: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>, uid: string) => void
+    deleteTodo: (uid: string) => void
 }
 
 const TodoItem: FunctionComponent<todoItem> = ({ title, status, uid, deleteTodo }) => {
@@ -56,7 +56,7 @@ const TodoItem: FunctionComponent<todoItem> = ({ title, status, uid, deleteTodo 
                     : <label className="todoElements__item-main-label" onDoubleClick={() => setStatusEdit(true)}>
                         {statusTodo ? <s>{titleTodo}</s> : titleTodo}
                     </label>}
-                <button className="destroy" onClick={(event) => deleteTodo(event, uid)}>Delete</button>
+                <img className="todoElements__item-main-delete" src={deleteIcon} alt="deleteIcon" onClick={() => deleteTodo(uid)} />
             </div>
             {error !== ''
                 ? <div className="todoElements__item-error">

@@ -101,9 +101,13 @@ body {
     flex-direction: column;
     &-main {
       display: grid;
-      grid-template-columns: 3% 82% 15%;
+      grid-template-columns: 3% 92% 5%;
       grid-template-rows: 30px;
       align-items: center;
+      &-delete{
+        width: 16px;
+        height: 16px;
+      }
       input[type="checkbox"] {
         position: relative;
         width: 1.5em;

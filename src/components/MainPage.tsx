@@ -61,8 +61,7 @@ const MainPage: FunctionComponent = () => {
         setTitleTodo(title);
     }, [])
 
-    const handleDeleteTodo = useCallback((event: React.MouseEvent<HTMLButtonElement, MouseEvent>, uid: string) => {
-        event.preventDefault();
+    const handleDeleteTodo = useCallback((uid: string) => {
         setDeleteUid(uid);
     }, [])
 

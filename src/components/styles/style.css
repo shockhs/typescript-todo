@@ -142,13 +142,18 @@ body {
 .todoElements__item-main {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 3% 82% 15%;
-      grid-template-columns: 3% 82% 15%;
+  -ms-grid-columns: 3% 92% 5%;
+      grid-template-columns: 3% 92% 5%;
   -ms-grid-rows: 30px;
       grid-template-rows: 30px;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.todoElements__item-main-delete {
+  width: 16px;
+  height: 16px;
 }
 
 .todoElements__item-main input[type="checkbox"] {
